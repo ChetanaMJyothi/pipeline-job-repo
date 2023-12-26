@@ -10,8 +10,8 @@ pipeline {
         booleanParam defaultValue: true, name: 'Execute'
     }
     triggers {
-      cron '*/10 * * * *'
-      pollSCM '* * * * *'
+      cron '* * * * *'
+      pollSCM 'H * * * *'
     }
     stages {
         stage('stage-1') {
