@@ -1,4 +1,4 @@
-def stage2Status='SUCCESS'
+def stage2Status='FAIL'
 def stage3Status='FAIL'
 pipeline {
     agent none
