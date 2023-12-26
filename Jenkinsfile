@@ -48,6 +48,9 @@ pipeline {
             }
         }
         stage('stage-3') {
+            agent {
+                label 'sonarAgent'
+            }
             when {
                 anyOf {
                     branch 'dev'
@@ -68,6 +71,9 @@ pipeline {
             }
         }
         stage('stage-4') {
+            agent {
+                label 'tomcat'
+            }
             when {
                 expression { stage3Status == 'SUCCESS' }
             }
