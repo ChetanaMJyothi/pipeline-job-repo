@@ -56,7 +56,7 @@ pipeline {
                 expression { stage2Status == 'SUCCESS' }
             }
             steps {
-                echo 'stage 3 is executing....'   
+                ech 'stage 3 is executing....'   
             }
             post {
                 success {
