@@ -60,9 +60,7 @@ pipeline {
             }
             post {
                 success {
-                    steps {
                         echo 'stage 3 executed Successfully!!'   
-                    }
                     script {
                         stage3Status='SUCCESS'
                     }
