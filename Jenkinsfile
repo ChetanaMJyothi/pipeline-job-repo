@@ -19,8 +19,11 @@ pipeline {
                 label 'sonarAgent'
             }
             steps {
-                echo "stage 1"
+                echo "Branch Name${BRANCH_NAME}"
+                echo "stage 1, Running on Sonar Agent"
+                sh 'Public Ip: hostname'
                 git branch: 'dev', url: 'https://github.com/ChetanaMJyothi/pipeline-job-repo.git'
+                
             }
         }
         stage('stage-2') {
@@ -28,7 +31,12 @@ pipeline {
                 label 'tomcat'
             }
             steps {
-                echo 'Hello stage 2'
+                echo 'stage 2, Running on Tomcat Agent'
+                sh 'Public Ip: hostname'
+                echo "Build Number: $BUILD_NUMBER"
+                echo "Job Number: $JOB_NAME"
+                touch fileStage1 fileStage2
+                echo "pwd: $WORKSPACE"
                 echo "Pipeline creator name $CreatorName"
                 echo "Executing in $EnvironmentName"
             }
@@ -50,6 +58,8 @@ pipeline {
             }
             steps {
                 echo 'Hello stage 3'
+              
+                
             }
             post {
                 success {
