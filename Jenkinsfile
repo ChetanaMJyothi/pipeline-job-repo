@@ -33,7 +33,7 @@ pipeline {
             }
             steps {
                 echo 'stage 2, Running on Tomcat Agent'
-                sh 'Public Ip: hostname'
+                sh 'hostname'
                 echo "Build Number: $BUILD_NUMBER"
                 echo "Job Number: $JOB_NAME"
                 sh 'touch fileStage1 fileStage2'
