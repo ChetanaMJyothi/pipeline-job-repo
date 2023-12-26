@@ -37,7 +37,8 @@ pipeline {
                 echo "Build Number: $BUILD_NUMBER"
                 echo "Job Number: $JOB_NAME"
                 sh 'touch fileStage1 fileStage2'
-                echo "pwd: $WORKSPACE"
+                sh 'cd $WORKSPACE"'
+                sh 'ls'
                 echo "Pipeline creator name $CreatorName"
                 echo "Executing in $EnvironmentName"
             }
