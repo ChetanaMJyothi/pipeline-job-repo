@@ -23,7 +23,7 @@ pipeline {
                 echo "stage 1, Running on Sonar Agent"
                 sh 'hostname'
                 echo "Global Variables:-"
-                echo "Branch Name $BRANCH_NAME"
+                echo "Branch Name: $BRANCH_NAME"
                 echo "Build Number: $BUILD_NUMBER"
                 echo "Job Name: $JOB_NAME"
                 echo "Git URL: $GIT_URL"
@@ -60,7 +60,7 @@ pipeline {
             }
             post {
                 success {
-                        echo 'stage 3 executed Successfully!!'   
+                    echo 'stage 3 executed Successfully!!'   
                     script {
                         stage3Status='SUCCESS'
                     }
