@@ -20,11 +20,13 @@ pipeline {
             }
             steps {
                 git branch: 'dev', url: 'https://github.com/ChetanaMJyothi/pipeline-job-repo.git'
-                echo "Branch Name $BRANCH_NAME"
                 echo "stage 1, Running on Sonar Agent"
                 sh 'hostname'
-               
-                
+                echo "Global Variables:-"
+                echo "Branch Name $BRANCH_NAME"
+                echo "Build Number: $BUILD_NUMBER"
+                echo "Job Name: $JOB_NAME"
+                echo "Git URL: $GIT_URL"
             }
         }
         stage('stage-2') {
@@ -34,10 +36,8 @@ pipeline {
             steps {
                 echo 'stage 2, Running on Tomcat Agent'
                 sh 'hostname'
-                echo "Build Number: $BUILD_NUMBER"
-                echo "Job Number: $JOB_NAME"
                 echo "Pipeline creator name $CreatorName"
-                echo "Executing in $EnvironmentName"
+                echo "Executing in $EnvironmentName Environment"
             }
             post {
                 success {
@@ -56,12 +56,13 @@ pipeline {
                 expression { stage2Status == 'SUCCESS' }
             }
             steps {
-                echo 'Hello stage 3'
-              
-                
+                echo 'stage 3 is executing....'   
             }
             post {
                 success {
+                    steps {
+                        echo 'stage 3 executed Successfully!!'   
+                    }
                     script {
                         stage3Status='SUCCESS'
                     }
@@ -73,12 +74,15 @@ pipeline {
                 expression { stage3Status == 'SUCCESS' }
             }
                 steps {
-                    echo "stage 4"
-                    build quietPeriod: 15, job: 'freestyle-job', waitForStart: true
+                    echo "stage 4 is executing..."
+                    build quietPeriod: 10, job: 'freestyle-job', waitForStart: true
                 }
         }
     }
     post {
+        success {
+            echo "Stage 4 has executed successfully!!"
+        }
         always {
             emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'chetanamj@gmail.com'
         }
