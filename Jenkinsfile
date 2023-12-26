@@ -19,10 +19,11 @@ pipeline {
                 label 'sonarAgent'
             }
             steps {
-                echo "Branch Name${BRANCH_NAME}"
+                git branch: 'dev', url: 'https://github.com/ChetanaMJyothi/pipeline-job-repo.git'
+                echo "Branch Name ${BRANCH_NAME}"
                 echo "stage 1, Running on Sonar Agent"
                 sh 'Public Ip: hostname'
-                git branch: 'dev', url: 'https://github.com/ChetanaMJyothi/pipeline-job-repo.git'
+               
                 
             }
         }
