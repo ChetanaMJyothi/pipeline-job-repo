@@ -9,6 +9,10 @@ pipeline {
         choice choices: ['Development', 'UAT', 'Production'], name: 'EnvironmentName'
         booleanParam defaultValue: true, name: 'Execute'
     }
+    triggers {
+      cron 'H * * * *'
+      pollSCM 'H 10 * * *'
+    }
     stages {
         stage('stage-1') {
             agent {
