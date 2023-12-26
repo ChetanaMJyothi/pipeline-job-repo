@@ -35,7 +35,7 @@ pipeline {
                 sh 'Public Ip: hostname'
                 echo "Build Number: $BUILD_NUMBER"
                 echo "Job Number: $JOB_NAME"
-                touch fileStage1 fileStage2
+                sh 'touch fileStage1 fileStage2'
                 echo "pwd: $WORKSPACE"
                 echo "Pipeline creator name $CreatorName"
                 echo "Executing in $EnvironmentName"
